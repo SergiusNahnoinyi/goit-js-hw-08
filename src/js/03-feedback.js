@@ -1,9 +1,10 @@
 'use strict';
 
+var throttle = require('lodash.throttle');
 const LOCALSTORAGE_KEY = 'feedback-form-state';
 const form = document.querySelector('.feedback-form');
 
-form.addEventListener('input', saveFormData);
+form.addEventListener('input', throttle(saveFormData, 2500));
 form.addEventListener('submit', onFormSubmit);
 
 checkFormData();
